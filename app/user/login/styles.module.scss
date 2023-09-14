@@ -1,0 +1,36 @@
+.login {
+  width: 800px;
+  margin: 10rem auto;
+}
+
+.loginwrapper {
+  display: flex;
+  //   align-items: flex-start;
+}
+
+.left {
+  width: 80%;
+}
+
+.center {
+  width: 0.5rem;
+  margin: 0px 1rem;
+  min-height: 100%;
+  background-color: rgb(204, 204, 204);
+}
+
+.right {
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.social {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: black;
+}

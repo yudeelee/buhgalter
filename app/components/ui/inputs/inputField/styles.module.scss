@@ -1,0 +1,20 @@
+.formData {
+  padding: 1rem;
+
+  label {
+    display: block;
+    font-size: 1.4rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+  }
+  input {
+    width: 100%;
+    padding: 2rem 2rem;
+    background-color: #edf1f4;
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1), inset -5px -5px 10px #fff;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+  }
+}

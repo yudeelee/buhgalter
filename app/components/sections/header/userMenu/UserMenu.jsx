@@ -6,7 +6,7 @@ const UserMenu = () => {
   return (
     <>
       <div className={styles.userImg}></div>
-      <Link href='/login' className={styles.link}>
+      <Link href='/user/login' className={styles.link}>
         Увійти
       </Link>
     </>
