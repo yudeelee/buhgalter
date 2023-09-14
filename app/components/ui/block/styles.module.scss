@@ -1,0 +1,59 @@
+.block {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #edf1f4;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px #fff;
+  position: relative;
+}
+
+.border-10 {
+  border-radius: 1rem;
+}
+.border-20 {
+  border-radius: 2rem;
+}
+.border-30 {
+  border-radius: 3rem;
+}
+.border-40 {
+  border-radius: 4em;
+}
+.border-50 {
+  border-radius: 5rem;
+}
+
+.padding-20 {
+  padding: 2rem;
+}
+.padding-30 {
+  padding: calc((100vw - 375px) / (1920 - 375) * (30 - 20) + 2rem);
+}
+.padding-40 {
+  padding: calc((100vw - 375px) / (1920 - 375) * (40 - 20) + 2rem);
+}
+.padding-50 {
+  padding: calc((100vw - 375px) / (1920 - 375) * (50 - 20) + 2rem);
+}
+.padding-60 {
+  padding: calc((100vw - 375px) / (1920 - 375) * (60 - 20) + 2rem);
+}
+.padding-70 {
+  padding: calc((100vw - 375px) / (1920 - 375) * (70 - 20) + 2rem);
+}
+.padding-80 {
+  padding: calc((100vw - 375px) / (1920 - 375) * (80 - 20) + 2rem);
+}
+.padding-90 {
+  padding: calc((100vw - 375px) / (1920 - 375) * (90 - 20) + 2rem);
+}
+.padding-100 {
+  padding: calc((100vw - 375px) / (1920 - 375) * (100 - 20) + 2rem);
+}
+
+.display-block {
+  display: block;
+}
+.display-inline {
+  display: inline-block;
+  width: fit-content;
+}
