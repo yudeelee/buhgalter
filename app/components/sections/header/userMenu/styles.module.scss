@@ -4,12 +4,27 @@
   top: -1.5rem;
   width: 7rem;
   height: 7rem;
-  border-radius: 50%;
+  border-radius: 30%;
   padding: 1rem;
   background-color: #edf1f4;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px #fff;
+
+  img {
+    width: 100%;
+    border-radius: 30%;
+  }
 }
 
 .link {
-  padding: 2rem;
+  // padding: 2rem;
+  border: none;
+  outline: none;
+  padding-left: 1rem;
+  margin-left: 0.5rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 1s;
+  &:hover {
+    text-decoration: underline;
+  }
 }
