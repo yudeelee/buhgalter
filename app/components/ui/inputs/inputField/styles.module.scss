@@ -7,6 +7,7 @@
     margin-left: 1rem;
     margin-bottom: 1rem;
     color: rgb(200, 134, 2);
+    transition: all 0.5s;
   }
   input {
     width: 100%;
@@ -17,5 +18,18 @@
     box-sizing: border-box;
     border: none;
     outline: none;
+    transition: all 0.5s;
+  }
+}
+
+.error {
+  label {
+    color: rgb(254, 139, 139);
+  }
+  input {
+    // border: 1px solid rgb(254, 139, 139);
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1), inset -5px -5px 10px #fff,
+      inset -5px -5px 10px rgb(254, 139, 139),
+      inset 5px 5px 10px rgb(193, 131, 131);
   }
 }

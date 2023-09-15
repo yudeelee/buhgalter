@@ -10,11 +10,17 @@ import Link from 'next/link';
 import StandardButton from '@/app/components/ui/buttons/standardButton/StandardButton';
 import { useState } from 'react';
 
+import Dloader from '@/app/components/ui/loaders/d3loader/Dloader';
+
 const Login = () => {
   const dots = new Array(10);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const [error, setError] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const enter = async () => {
     let options = {
@@ -22,8 +28,13 @@ const Login = () => {
       email: email,
       password: password,
     };
+    setIsLoading(true);
     const res = await signIn('credentials', options);
-    console.log(res.data);
+    setIsLoading(false);
+    if (res?.error) {
+      setError(true);
+      console.log(res);
+    }
   };
 
   return (
@@ -39,16 +50,24 @@ const Login = () => {
           <Block padding={40} border={20}>
             <div className={styles.left}>
               <InputField
+                error={error}
                 type='email'
                 placeholder='Введіть Ваш email'
                 label='E-mail'
-                change={(value) => setEmail(value)}
+                change={(value) => {
+                  setError(false);
+                  setEmail(value);
+                }}
               />
               <InputField
+                error={error}
                 type='password'
                 placeholder='Введіть Ваш пароль'
                 label='Пароль'
-                change={(value) => setPassword(value)}
+                change={(value) => {
+                  setError(false);
+                  setPassword(value);
+                }}
               />
               <div className={styles.pl}>
                 <StandardButton text='Увійти' color='orange' click={enter} />
@@ -80,6 +99,7 @@ const Login = () => {
             </div>
           </Block>
         </div>
+        {isLoading && <Dloader />}
       </div>
       ;
     </>

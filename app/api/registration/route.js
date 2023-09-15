@@ -8,21 +8,31 @@ export async function POST(req) {
     await db.connectDb();
     const { name, email, password } = await req.json();
     if (!name || !email || !password) {
-      return res.status(400).json({ message: 'Будь-ласка заповніть усі поля' });
+      return new Response(
+        JSON.stringify({ message: 'Будь-ласка заповніть усі поля', err: true })
+      );
     }
     if (!validateEmail(email)) {
-      return res.status(400).json({ message: 'Некоректний E-mail' });
+      return new Response(
+        JSON.stringify({ message: 'Некоректний E-mail', err: true })
+      );
     }
     const user = await User.findOne({ email });
     if (user) {
-      return res
-        .status(400)
-        .json({ message: 'Користувач з таким E-mail вже існує' });
+      return new Response(
+        JSON.stringify({
+          message: 'Користувач з таким E-mail вже існує',
+          err: true,
+        })
+      );
     }
     if (password.length < 6 || password.length > 36) {
-      return res.status(400).json({
-        message: 'Довжина Вашого паролю має бути більша за 6 і менша 36',
-      });
+      return new Response(
+        JSON.stringify({
+          message: 'Довжина Вашого паролю має бути більша за 6 і менша 36',
+          err: true,
+        })
+      );
     }
     const cryptedPassword = await bcrypt.hash(password, 12);
     const newUser = new User({
@@ -32,8 +42,19 @@ export async function POST(req) {
     });
     const addedUser = await newUser.save();
     await db.disconnectDb();
-    return new Response('OK');
+    return new Response(
+      JSON.stringify({
+        message:
+          'Нового користувача успішно створено, зараз Вас перенаправлять на сторінку входу',
+        err: false,
+      })
+    );
   } catch (err) {
-    console.log(err);
+    return new Response(
+      JSON.stringify({
+        message: 'Щось хибне трапилось на сервері',
+        err: true,
+      })
+    );
   }
 }
