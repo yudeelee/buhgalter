@@ -17,12 +17,17 @@ const Login = () => {
       <div className={styles.login}>
         <div className={styles.title}>
           <Block padding={20} border={20}>
-            <h1>Вхід</h1>
+            <h1>Реєстрація</h1>
           </Block>
         </div>
         <div className={styles.loginwrapper}>
           <Block padding={40} border={20}>
             <div className={styles.left}>
+              <InputField
+                type='text'
+                placeholder="Введіть Ваш ім'я"
+                label="Ім'я"
+              />
               <InputField
                 type='email'
                 placeholder='Введіть Ваш email'
@@ -33,14 +38,19 @@ const Login = () => {
                 placeholder='Введіть Ваш пароль'
                 label='Пароль'
               />
+              <InputField
+                type='password'
+                placeholder='Введіть повторно Ваш пароль'
+                label='Підтвердження паролю'
+              />
               <div className={styles.pl}>
-                <StandardButton text='Увійти' color='orange' />
+                <StandardButton text='Зареєструватися' color='orange' />
               </div>
             </div>
             <p className={styles.normal}>
-              Ще не зареєстровані?{' '}
-              <Link href='/user/registration' className={styles.link}>
-                Реєстрація
+              Вже зареєстровані?{' '}
+              <Link href='/user/login' className={styles.link}>
+                Увійдіть
               </Link>
             </p>
           </Block>
