@@ -10,6 +10,9 @@
 
     a {
       padding: 2rem;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }
