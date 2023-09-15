@@ -41,7 +41,6 @@ export async function POST(req) {
       password: cryptedPassword,
     });
     const addedUser = await newUser.save();
-    await db.disconnectDb();
     return new Response(
       JSON.stringify({
         message:
