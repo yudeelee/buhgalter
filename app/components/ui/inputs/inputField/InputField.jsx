@@ -7,7 +7,11 @@ const InputField = ({ type = 'text', change, placeholder, label }) => {
   return (
     <div className={styles.formData}>
       {label && <label>{label}</label>}
-      <input type={inputType} placeholder={placeholder} onChange={change} />
+      <input
+        type={inputType}
+        placeholder={placeholder}
+        onChange={(e) => change(e.target.value)}
+      />
     </div>
   );
 };

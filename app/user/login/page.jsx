@@ -8,9 +8,24 @@ import InputField from '@/app/components/ui/inputs/inputField/InputField';
 import { signIn, getSession } from 'next-auth/react';
 import Link from 'next/link';
 import StandardButton from '@/app/components/ui/buttons/standardButton/StandardButton';
+import { useState } from 'react';
 
 const Login = () => {
   const dots = new Array(10);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const enter = async () => {
+    let options = {
+      redirect: false,
+      email: email,
+      password: password,
+    };
+    const res = await signIn('credentials', options);
+    console.log(res.data);
+  };
+
   return (
     <>
       <Header />
@@ -27,14 +42,16 @@ const Login = () => {
                 type='email'
                 placeholder='Введіть Ваш email'
                 label='E-mail'
+                change={(value) => setEmail(value)}
               />
               <InputField
                 type='password'
                 placeholder='Введіть Ваш пароль'
                 label='Пароль'
+                change={(value) => setPassword(value)}
               />
               <div className={styles.pl}>
-                <StandardButton text='Увійти' color='orange' />
+                <StandardButton text='Увійти' color='orange' click={enter} />
               </div>
             </div>
             <p className={styles.normal}>
