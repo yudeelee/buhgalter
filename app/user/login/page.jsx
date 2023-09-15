@@ -14,12 +14,12 @@ const Login = () => {
       <Header />
       <div className={styles.login}>
         <div className={styles.title}>
-          <Block padding={20} border={30}>
+          <Block padding={20} border={20}>
             <h1>Вхід</h1>
           </Block>
         </div>
         <div className={styles.loginwrapper}>
-          <Block padding={40} border={30}>
+          <Block padding={40} border={20}>
             <div className={styles.left}>
               <InputField
                 type='email'
@@ -38,7 +38,7 @@ const Login = () => {
               <div key={idx} className={styles.circle}></div>
             ))} */}
           </div>
-          <Block padding={40} border={30}>
+          <Block padding={40} border={20}>
             <div className={styles.right}>
               <div className={styles.social} onClick={() => signIn('google')}>
                 <img src='/img/gl.png' alt='' />
