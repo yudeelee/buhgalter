@@ -5,15 +5,22 @@ import styles from './styles.module.scss';
 import Block from '@/app/components/ui/block/Block';
 import InputField from '@/app/components/ui/inputs/inputField/InputField';
 
-import { signIn, getSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import StandardButton from '@/app/components/ui/buttons/standardButton/StandardButton';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 import Dloader from '@/app/components/ui/loaders/d3loader/Dloader';
 
 const Login = () => {
-  const dots = new Array(10);
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  if (session) {
+    redirect('/');
+  }
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,6 +41,10 @@ const Login = () => {
     if (res?.error) {
       setError(true);
       console.log(res);
+    } else {
+      setEmail('');
+      setPassword('');
+      router.replace('/');
     }
   };
 
@@ -80,11 +91,7 @@ const Login = () => {
               </Link>
             </p>
           </Block>
-          <div className={styles.center}>
-            {/* {new Array(10).fill(2).map((item, idx) => (
-              <div key={idx} className={styles.circle}></div>
-            ))} */}
-          </div>
+          <div className={styles.center}></div>
           <Block padding={40} border={20}>
             <div className={styles.right}>
               <div className={styles.social} onClick={() => signIn('google')}>

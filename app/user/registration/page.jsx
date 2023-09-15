@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 import Block from '@/app/components/ui/block/Block';
 import InputField from '@/app/components/ui/inputs/inputField/InputField';
 
-import { signIn, getSession } from 'next-auth/react';
+import { getSession, signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import StandardButton from '@/app/components/ui/buttons/standardButton/StandardButton';
 import { useEffect, useState } from 'react';
@@ -14,8 +14,15 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Dloader from '@/app/components/ui/loaders/d3loader/Dloader';
 
+import { redirect } from 'next/navigation';
+
 const Login = () => {
+  const { data: session } = useSession();
   const router = useRouter();
+
+  if (session) {
+    redirect('/');
+  }
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
