@@ -6,7 +6,7 @@ const StandardButton = ({ text, color = 'standard', click }) => {
     : color;
   const classes = styles.btn + ' ' + styles[colorClass];
   return (
-    <div className={StyleSheet.button}>
+    <div className={styles.button}>
       <button className={classes} onClick={click}>
         {text}
       </button>
